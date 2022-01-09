@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos de JS.</title>
+</head>
+
+<body>
+  <h1>Fundamentos de JS. 🤩</h1>
+  <script>
+    var hola = "hola mundo"
+    let hello = "hello world",
+      nombre;
+
+    console.log(window)
+    console.log(hola)
+    const PI = 3.14;
+    // PI = 3.16; NOO
+    //const NUEVE; NOO
+    console.log(PI)
+    nombre = 'Edily'
+    console.log(nombre)
+
+    console.log
+
+    //TIPOS DE DATOS.
+
+    //**************************STRING********************************
+    let nombreUsuario = "Edily Mora"
+    let nombreUsuario2 = 'Edily'
+    let nombreUsuario3 = new String('Edily Mora Luzardo') //Demasiado Formal
+    let lorem = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque non voluptas distinctio, minima quo earum aliquid! Assumenda necessitatibus, odio dolor vel illo commodi repudiandae hic aperiam, neque cupiditate consequatur id?"
+
+    console.log(nombreUsuario, nombreUsuario2, nombreUsuario3)
+    console.log(
+      nombreUsuario.length,
+      nombreUsuario2.length,
+      nombreUsuario.length)
+
+    console.log(
+      nombreUsuario.toUpperCase(),
+      nombreUsuario2.toLowerCase(),
+      lorem.includes("adipisicing"),
+      lorem,
+      lorem.trim(),
+      lorem.split(','))
+
+    const str1 = 'Hello';
+    const str2 = 'World';
+    const str3 = 'Edily'
+    console.log(str1.concat(' ', str2));//expected output: "Hello World"
+    console.log(str2.concat(', ', str1, ', ', str3));
+    console.log(lorem.substr(-2)) //DEPRECADO
+
+
+    const str = 'The quick brown fox jumps over the lazy dog.';
+    //es lo mismo.
+    console.log(str.slice(4));
+    console.log(str.substring(4));
+    //es lo mismo, pero con un cambio en los parametros
+    console.log(str.slice(-3));
+    console.log(str.substring(str.length - 3));
+
+
+    //Concatenar e interpolar.
+    let nombr = "Edily"
+    let apellido = 'Mora'
+    let saludo = 'Hola mi nombre es: ' + nombr + ' ' + apellido
+
+    let saludo2 = "hola"
+    saludo2 += "mi nombre es: "
+    saludo2 += " Edily Mora"
+
+    let saludo3 = `Hola mi nombre es: ${nombr} ${apellido}`
+
+    console.log(saludo)
+    console.log(saludo2)
+    console.log(saludo3)
+
+    //**************************Numbers********************************
+    let a = 1;
+    let b = new Number(2);
+    let c = 7.19;
+
+    console.log(a, b, c, c.toFixed(1))
+
+    function financial(cadena) {
+      return parseFloat(cadena).toFixed(2);
+    }
+    let numFloat = financial(123.456)
+    console.log(numFloat, "****");// expected output: "123.46"
+
+    let d = parseInt(17.7)
+    let e = "3.12"
+    console.log(d, parseInt(e)) // 17 3
+
+    let dF = parseFloat(17.7)
+    let eF = "3.12"
+    console.log(dF, parseFloat(eF)) // 17.7   3.12
+
+    let edad = eF + 5
+    console.log(typeof edad, edad) // string 3.125 
+
+    //***********metodo isNaN
+    function milliseconds(x) {
+      if (isNaN(x)) {
+        return 'Not a Number!';
+      }
+      return x * 1000;
+    }
+
+    console.log(milliseconds('100F'));
+    // expected output: "Not a Number!"
+
+    console.log(milliseconds('0.0314E+2'));
+    // expected output: 3140
+
+
+
+    //**************************Boolean****************************** //
+
+    let bandera = true
+    console.log(typeof bandera)//boolean
+
+
+    //**************************Undefined******************************
+    let indefinida;
+    console.log(indefinida)//undefined
+    console.log(typeof indefinida)//undefined
+
+
+    //************************Null******************************
+
+    function getVowels(str) {
+      const m = str.match(/[aeiou]/gi); //El Metodo match() devuelve un null si no encuentra coincidnecia
+      if (m === null) {
+        return 0;
+      }
+      return m.length;
+    }
+
+    console.log(getVowels('sky'));
+    // expected output: 0
+
+
+    //***********************Function****************************
+
+    //*********Funcion Declarada.
+
+    function soloImprimo() {
+      console.log("Soy Funcion Solo imprimo1")
+      return console.log("salgo"); //Esto detiene el flujo interno de la Func. y efectivamente imprimo un 0
+      console.log("Soy Funcion Solo imprimo2")
+      console.log("Soy Funcion Solo imprimo3")
+      return console.log("exito");
+    }
+    soloImprimo() // Soy Funcion Solo imprimo1        salgo
+
+    saludar()//Hola soy YO y mi edad es 11
+
+    function saludar(nombre2 = "YO", edad2 = 11) {
+      console.log(`Hola soy ${nombre2} y mi edad es ${edad2}`)
+    }
+
+    saludar("Edy", 22)//Hola soy Edy y mi edad es 22
+    saludar()//Hola soy YO y mi edad es 11
+
+    const funcionNombrada = function imprime() {
+      console.log("Hola1")
+    }
+
+    const funcionAnonima = function () {
+      console.log("Hola2")
+    }
+
+    const funcionArrow = () => {
+      console.log("Hola3")
+    }
+
+    funcionNombrada()//Hola1
+    funcionAnonima()//Hola2
+    funcionArrow()//Hola3
+
+
+
+
+    //************************Array****************************
+    const arrayVacio = []
+    const arraylleno = [1, 'Hola', ["a", "b", 23, [1, 33]], false]
+
+
+    console.log(arrayVacio.length)//0
+    console.log(arraylleno.length)//4
+
+    console.log(arrayVacio)
+    console.log(arraylleno)
+    console.log(arraylleno[1]) //Hola
+    console.log(arraylleno[2]) //(4) ['a', 'b', 23, Array(2)]
+    console.log(arraylleno[2][2]) //23
+    console.log(arraylleno[2][3][1]) //33
+
+
+    const arrayOf = Array.of(true, 'si', 33)
+    console.log(arrayOf)//(3) [true, 'si', 33]
+
+
+    const arrayConstruido = Array(5)
+    console.log(arrayConstruido)//(5) [empty × 10]
+
+    arrayConstruido.fill(33)
+    console.log(arrayConstruido)//(5) [33, 33, 33, 33, 33]
+
+    const colores = ['amarillo', 'azul', 'rojo',]
+    console.log(colores)//(3) ['amarillo', 'azul', 'rojo']
+    colores.push('negro')
+    console.log(colores)//(4) ['amarillo', 'azul', 'rojo', 'negro']
+
+
+    colores.pop()
+    console.log(colores)//(3) ['amarillo', 'azul', 'rojo']
+
+    //***************Funcioon filter()
+    const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+    const result = words.filter(word => word.length > 6);
+
+    console.log(result); // expected output: Array ["exuberant", "destruction", "present"]
+
+
+    //*****************funcion map()
+    var numbers = [1, 5, 10, 15];
+    var doubles = numbers.map(function (x) {
+      return x * 2;
+    });
+    // doubles is now [2, 10, 20, 30]
+    // numbers is still [1, 5, 10, 15]
+
+    //*********includes()
+    const array1 = [1, 2, 3];
+
+    console.log(array1.includes(2)); // expected output: true
+
+    colores.forEach((el, index) => {
+      console.log(`<li id='${index}'>${el}</li>`)
+    })
+
+
+
+    console.clear()
+
+    //********************Objetos********************************
+
+    const obj = {}
+    console.log(obj)
+
+    let nacionalidad = 'venezolana'
+    let genero = 'mujer'
+
+    const edily = {
+      nacionalidad: nacionalidad,
+      genero,
+      nombre: 'Edily',
+      apellido: 'Mora',
+      edad: 34,
+      hobies: ['correr', 'caminar', 'programar'],
+      saludar: function () {
+        console.log(`Hola mi nombre es ${this.nombre}`)
+      },
+      casado: false,
+      contacto: {
+        ig: '@edilyM',
+        correo: 'edilym@gmail.com',
+        tel: '04246882668'
+      },
+      hablar() {
+        console.log(`Soy ${this.nombre} y puedo hablar`)
+      }
+    }
+    console.log(edily)
+    edily.saludar()//Hola mi nombre es Edily 
+    console.log(edily.nombre)//Edily
+    console.log(edily['apellido'])//Mora
+    console.log(edily.hobies[2])//programar
+    console.log(edily['hobies'][2])//programar
+    console.log(edily.contacto.tel)//04246882668
+    console.log(Object.keys(edily))//(7) ['nombre', 'apellido', 'edad', 'hobies', 'saludar', 'casado', 'contacto']
+
+
+    const arrayEdilyKey = Object.keys(edily)
+    console.log(arrayEdilyKey[6])//contacto
+
+    const arrayEdilyValue = Object.values(edily)
+    console.log(arrayEdilyValue[6])//contacto {ig: '@edilyM', correo: 'edilym@gmail.com', tel: '04246882668'}
+
+
+    console.log(edily.hasOwnProperty('nombre'))//true
+
+    console.clear()
+
+
+    //****************  Tipos de Operadores***********************
+    //***********Operadores Aritmeticos.
+
+    let resultado = 3 + 3 - 8 * 8; //-58
+    resultado = 3 + (3 - 8) * 8 //-37
+    let division = 5 / 2
+    let modulo = 5 % 2
+
+    console.log(resultado)//
+    console.log(division)//2.5
+    console.log(modulo)//1
+
+
+    //***********Operadores Relacionales.
+    console.log(8 > 9)//false
+    console.log(8 < 9)//true
+    console.log(8 < 8)//false
+    console.log(8 <= 8)//true
+    console.log(8 >= 8)//true
+    console.log(8 <= 9)//true
+    console.log(8 >= 9)//false
+
+
+    console.log(7 == 7)//true
+    console.log("7" == 7)//true
+    console.log("7" === 7)//false
+    console.log("0" == false)//true
+    console.log(0 == false)//true
+    console.log(0 === false)//false
+
+
+    //***********Operadores de Incremento y Decremento.
+    let i = 1;
+    i += 4 //el valor que vale i mas 4
+    i -= 4 //el valor que vale i menos 4
+    i /= 4 //el valor que vale i entre 4
+    i *= 4 //el valor que vale i por 4
+
+    //***********Operador Unario es el CONTADOR.
+    i = 7;
+    i++; //el valor de i mas 1
+    i--;//el valor de i menos 1
+    console.log(i)
+
+    console.log(!false)//true
+
+    console.log((9 == '9') || (9 === '9'))//TRUE
+
+    console.log((9 == '9') && (9 === '9'))//FALSE
+    console.log((9 == '9') && (0 == false))//TRUE
+
+    //***********Operadores de Cortocircuito.
+
+    function saludar3(nomb) {
+      nomb = nomb || 'TU'
+      return `Hola ${nomb}`
+    }
+    console.log(saludar3('edily'))//Hola edily
+    console.log(saludar3())// Hola TU
+
+    console.log(false && "soy valido")//false
+    console.log("soy valido" && 0)//0
+    console.log(false && 0)//false
+    console.log(0 && false)//0
+
+    //*********** CONDICIONALES.
+    //*************if()else{}.
+
+    let edad3
+    edad3 = 18
+    if (edad3 >= 18) {
+      console.log('Eres mayor de edad')
+    } else {
+      console.log('No eres mayor de edad')
+    }
+
+
+    //*************if()else{} anidados.
+    let hora = 17
+
+    if (hora >= 0 && hora <= 5) { //rango de 0 a 5
+      console.log('Dejame Dormir.')
+    } else if (hora > 5 && hora <= 11) {//de 6 a 11
+      console.log('Buenos dias.')
+    } else if (hora > 11 && hora <= 18) {//de 12 a 18
+      console.log('Buenas tardes.')
+    } else if (hora > 18 && hora <= 23) {//de  19 a 23
+      console.log('Buenas noches.')
+    } else {
+      console.log('No existe horario')
+    }
+
+    //*************Operador ternario
+    edad3 = 7
+    let mayoridad = (edad3 >= 18)
+      ? 'Ers mayor de edad'
+      : 'Ers menor de edad'
+    console.log(mayoridad)//Ers menor de edad
+
+    //***********Swich/case
+
+    let dia = 5
+
+    switch (dia) {
+      case 1:
+        console.log('Domingo')
+        break;
+
+      case 1:
+        console.log('Lunes')
+        break;
+
+      case 2:
+        console.log('miercoles')
+        break;
+
+      case 3:
+        console.log('jueves')
+        break;
+
+
+      default: console.log('otro dia')
+        break;
+    }
+    //*************while(){}
+    let contador = 0
+    while (contador < 10) {
+      console.log(`Numero de iteraciones = ${contador}`)
+      contador++
+    }
+    console.log('*******************************')
+
+    while (contador >= 0) {
+      console.log(`Numero de iteraciones = ${contador}`)
+      contador--
+    }
+
+
+    //*************for(){}
+    for (let i = 0; i < 11; i++) {
+      console.log(`Iteracion No = ${i}`);
+
+    }
+    for (let i = 0; i < colores.length; i++) {
+      console.log(`${[i]} - ${colores[i]}`)
+    }
+    console.log(colores)
+
+
+    for (const key in edily) {
+      console.log(`${key}: ${edily[key]};`)
+    }
+    console.log(edily.contacto)
+    console.log(edily.nombre)
+
+
+    colores.push({ colorSuave: 'melon', colorDuro: 'violeta' })
+
+    console.log('****************')
+    for (const i of colores) {
+      console.log(i)
+    }
+    let cadena = "hola"
+    for (const caracter of cadena) {
+      console.log(caracter)
+    }
+
+    //***************try{}catch(){}finally{}
+
+    try {
+      console.log("soy try UNO")
+      console.log("soy try DOS")//Mostro hasta aqui
+      suyUnError//Error 1, una variable no declarada es un error
+      const pi = 13.4//Error 2
+      pi = 14
+      console.log("soy try TRES")//esto NO se mostro
+
+    } catch (er) {
+      console.log("soy try ERROR")//mostro esto
+      console.log(er)//se trajo el obj Error 1
+
+    } finally {
+      console.log("soy FINALLY")//mostro esto 
+    }
+
+    //***********lanzamiento de errores propios.
+    try {
+      let num0 = '17'
+      if (isNaN(num0)) {
+        throw new Error("Digite un numero")
+      }
+      console.log(num0 * num0)//289 en number
+
+    } catch (er) {
+      console.log(`Se produjo este ${er}`)
+    }
+
+
+    //************break & continue
+    let numeros = [1, 2, 3, 4, 5, 6, 7, 'no imprimir', 8, 9, 10]
+    for (i = 0; i < numeros.length; i++) {
+      if (i === 5) {
+        break
+      }
+      console.log(numeros[i])
+    }
+    console.log('***************Continue******')
+    //************break & continue
+
+    for (i = 0; i < numeros.length; i++) {
+
+      if (numeros[i] === 7) {
+        continue
+      }
+      console.log(numeros[i])//1,2,3,4,5,6,'no imprimir', 8, 9, 10
+    }
+
+    //**********Extraccion Tradicional del Array
+    const colores2 = ['amarillo', 'azul', 'verde', 'rojo']
+    let yelow = colores2[0]
+    let blue = colores2[1]
+    let green = colores2[2]
+    let red = colores2[3]
+
+    console.log(yelow, blue, red, green)//amarillo azul rojo verde
+
+    //*******************Destruccutacion de Array
+    let [amarillito, azulito, verdecito, rojito] = colores2
+    console.log(verdecito)//verde
+
+
+    //**********Destructuracion del Object
+    const edily2 = {
+      name: 'Edily Rosa',
+      lastName: 'Mora',
+      age: 33,
+      studies: ['programing', 'english']
+    }
+
+    let { name, lastName, age, studies } = edily2
+
+    console.log(studies, name);//(2) ['programing', 'english']Edily Rosa'
+
+    console.log(edily.nacionalidad)//venezolana
+    console.log(edily.genero)//mujer
+    console.log(edily.hablar())//Soy Edily y puedo hablar
+
+
+
+    //***********Parametro REST
+    function suma(a, b, ...c) {
+      let resultadoSuma = a + b;
+      c.forEach((el) => {
+        resultadoSuma += el//sumatoria acumulativa
+      });
+      return resultadoSuma
+    }
+    console.log(suma(1, 20, 30, 80, 10, 11))//152
+
+    console.log(suma(1, 20))//21
+
+
+
+    //***********Operadores Relacionales.
+
+    colores.push('morado', 'dorado', 'celeste')
+    console.log(colores)
+
+    let arraySpread = [...colores, ...numeros]
+    console.log(arraySpread)
+
+
+    const superEdy = [1, 2, ...colores]
+
+    console.log(superEdy)//(9) [1, 2, 'amarillo', 'azul', 'rojo', {…}, 'morado', 'dorado', 'celeste']
+
+
+    //***********************Arrow Function
+    const funcionAnom = function () {
+      return 'Hola soy una funcion expresada Anonima'
+    }
+
+    const funcionFlecha = () => 'hola soy funcion flecha'
+
+    console.log(funcionAnom())
+    console.log(funcionFlecha())
+
+    const funcionArrow1 = nombre => console.log(`Hola ${nombre}`)
+
+    funcionArrow1('Rosa')//Hola Rosa
+
+    const funcionArrow2 = (nombre, edad) => console.log(`Hola ${nombre} y mi edad es ${edad}`)
+
+    funcionArrow2('Rosa', 23)//Hola Rosa y mi edad es 23
+
+    // const suma23 = function (a, c) {
+    //   return a + c
+    // }
+    // console.log(suma23(2, 2))
+
+    const suma23 = (a, b) => a + b
+    console.log(suma23(2, 2))
+
+    colores.forEach((el, i) => console.log(`${el} esta en la posicion ${i}`))
+
+    function global() {
+      console.log(this)
+    }
+    global()
+
+    const local = function () {
+      console.log(this)
+    }
+    local()
+
+    const arrowF = () => console.log(this)
+
+    arrowF()
+
+    nacionalidad = 'Colom'
+
+    const luis = {
+      nombre: 'Luis',
+      edad: 23,
+      scope1: () => {
+        console.log(luis.nombre);//Luis
+        console.log(this.nacionalidad);//undefined
+        console.log(nacionalidad);//Colom
+      }
+    }
+    luis.scope1()
+
+    console.clear()
+
+    nombre = 'Carlitos'
+    const marco = {
+      nombre: 'Marco',
+      apellido: 'Moras',
+
+      saludarConParametro: function (nombre) {
+        console.log(`Hola mi nombre es ${nombre}`)
+      },
+
+      saludarConAtributoInter: function () {
+        console.log(`Hola mi nombre es ${this.nombre}`)
+      },
+
+      saludarConAtributoExterno: function () {
+        console.log(`Hola mi nombre es ${nombre}`)
+      }
+    }
+
+    marco.saludarConParametro('Jorge')//Hola mi nombre es Jorge
+    marco.saludarConParametro()//undefined
+    marco.saludarConAtributoInter()//Hola mi nombre es Marco
+    marco.saludarConAtributoExterno()//Hola mi nombre es Carlitos
+
+    //******************Prototipos
+    function Humano(genero, nombre, edad) {
+      //*********Attributos del Prototipo
+      this.genero = genero;
+      this.nombre = nombre;
+      this.edad = edad;
+    }
+    //*******Metodos del Prototipo Humano.
+    Humano.prototype.hablar = function () {
+      console.log(`Hola Soy ${this.nombre} y puedo hablar`);
+    }
+    Humano.prototype.saludoGeneral = function () {
+      console.log('Hola soy un Humano');
+    }
+    //Necesito instancias para dar valor a los atributos y poder llamar los metodos
+
+    const humanoMaria = new Humano('Femenino', 'Maria', 20)
+    humanoMaria.hablar()//Hola Soy Maria y puedo hablar
+    console.log(humanoMaria.edad);//20
+
+
+    const humanoJose = new Humano('masculino', 'Jose', 30)
+    console.log(humanoJose);
+    console.log(humanoMaria);
+    humanoMaria.saludoGeneral()//Hola soy un Humano
+    humanoJose.saludoGeneral()//Hola soy un Humano
+    humanoMaria.hablar()//Hola Soy Maria y puedo hablar
+    humanoJose.hablar()//Hola Soy Jose y puedo hablar
+
+    console.clear()
+
+    //*********************CLASS Y HERENCIA
+
+    nacionalidad = 'chilena'
+
+    class Persona {
+      constructor(nombre, genero, nacionalidad) {
+        this.nombre = nombre;
+        this.genero = genero;
+        this.nacionalidad
+      }
+
+      static personalidad() {
+        console.log('Toda persona tiene personalidad');
+      }
+      respirar() {
+        console.log('Todas las pesonas respiramos aire');
+      }
+      saludar() {
+        console.log(`Hola mi nombre es ${this.nombre}`);
+      }
+      nacionalidad() {
+        console.log(`Hola mi nacionalidad es ${nacionalidad}`);
+      }
+
+      hobbies(correr, ...otros) {
+        let otrosHobies = ''
+        otros.forEach(el => {
+          otrosHobies += el + ', '
+        });
+        console.log(`Hola mis hobbies son: ${correr}, ${otrosHobies.slice(0, -2)}.`)// -2 para q elimine la ultima coma del string.
+      }
+
+    }
+
+    const maria = new Persona('Maria', 'femenino')
+    const carlos = new Persona('Carlos', 'masculino')
+    console.log(maria);
+    maria.respirar()//Todas las pesonas respiramos aire
+
+    maria.nacionalidad(); //Hola mi nacionalidad es undefined
+    maria.hobbies('correr', 'saltar', 'bailar', 'programar')//Hola mis hobbies son: correr, saltar, bailar, programar.
+
+
+
+
+
+    //************HERENCIA DE LA CLASE
+    class Chino extends Persona {
+      constructor(nombre, genero, color, peso) {
+        super(nombre, genero);
+        this.color = color;
+        this.peso = null
+      }
+
+      set setPeso(peso) {
+        this.peso = peso
+      }
+      get getPeso() {
+        return this.peso
+      }
+
+      saludar() {
+        console.log(`Hola mi nombre es ${this.nombre} y hablo en MANDARIN`);
+      }
+      hacerSushi() {
+        console.log('Puedo hacer sushi')
+      }
+    }
+
+    const ham = new Chino('Ham', 'masculino', 'amarillo')
+    ham.respirar()//Todas las pesonas respiramos aire METODO DE PADRE
+    ham.saludar()//Hola mi nombre es Ham y hablo en MANDARIN metodo OVERWRITE
+    ham.hacerSushi()//Puedo hacer sushi METODO PROPIO
+
+    Persona.personalidad()//Toda persona tiene personalidad
+
+
+    ham.setPeso = '20 kg'
+    console.log(ham.getPeso);//20 kg
+    console.log(ham);
+
+
+    maria.nacionalidad(); //Hola mi nacionalidad es chilena
+
+
+    maria.saludar()//Hola mi nombre es Maria
+
+
+    //**************************CONSOLE
+
+    console.log(document);//El DOM en su forma HTML
+    console.dir(document);//El DOM parceado a objeto JS.
+
+    console.group('Acordeon de opciones')
+    console.log("uno");
+    console.log("uno");
+    console.log("uno");
+    console.log("uno");
+    console.groupEnd()
+
+    console.table(Object.entries(console).sort())//Devuelve una tabla de todas las funciones y atributo, ordenadas alfabeticamente
+
+
+    console.table(ham)
+
+    console.clear()
+
+    let x = 2,
+      y = 2.
+    pruebaXY = 'Se espera que X siempre sea menor que Y '
+    console.assert(x < y, { x, y, pruebaXY })
+
+    console.clear()
+
+    //**********************CONSTRUCTOR DATE.
+
+    let fecha = new Date()
+    console.log(fecha)//Mon Jan 03 2022 13:00:22 GMT-0400 (hora de Venezuela)
+
+    console.log(fecha.getDate())// 3 en TDD number.
+    console.log(fecha.getDay())// 1 en TDD number.
+    console.log(fecha.getMonth())// 0 en TDD number.
+    console.log(fecha.getFullYear())// 2022 en TDD number.
+    console.log(fecha.getHours())// 14 en TDD number.
+    console.log(fecha.getMinutes())// 2 en TDD number.
+    console.log(fecha.getSeconds())// 26 en TDD number.
+    console.log(fecha.getMilliseconds())// 286 en TDD number.
+    console.log(fecha.toString())//  = Date()
+    console.log(fecha.toDateString())//  Mon Jan 03 2022
+    console.log(fecha.toLocaleString())// 3/1/2022 14:11:27
+    console.log(fecha.toLocaleDateString())// 3/1/2022 
+    console.log(fecha.toLocaleTimeString())// 14:17:15
+
+    let nacimiento = new Date(1987, 0, 28)
+    console.log(nacimiento);//Wed Jan 28 1987 00:00:00 GMT-0400 (hora de Venezuela)
+
+
+    let azar = Math.round((Math.random() * 100))
+    console.log(azar);// 94 en TDD number.
+    console.clear()
+
+    // //alert('Hola soy una alerta')
+    // // let confirmacion = confirm('Conforme si esta deacuerdo')//
+    // console.log(confirmacion);//aceptar = true .. cancelar = false
+
+    // // let aviso = prompt('Ingrese la informacion solicitada')//
+    // console.log(aviso);//devuelve el dato digitado o null si cancelo
+
+    console.clear()
+    //********************Expresiones Regulares.
+    let cadena1 = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.Quaerat impedit quis architecto ad a nulla vitae minima possimus atque eum error cumque illo molestiae, consequuntur asperiores.Reprehenderit dolorem natus voluptate?'
+
+    let expresionRegular = new RegExp('Lorem', 'i')
+    let expresionRegular2 = /Lorem/ig
+    let expresionRegular3 = /\d/ //valida si en la cadena hay numeros
+    let expresionRegular4 = /[0-9]/ //valida si en la cadena hay numeros
+
+    console.log(expresionRegular.test(cadena1))//true
+    console.log(expresionRegular2.test(cadena1))//true
+    console.log(expresionRegular.exec(cadena1))//['lorem', index: 201, input: 'Lorem ipsum ...
+    console.log(expresionRegular2.exec(cadena1))//['lorem', index: 201, input: 'Lorem ipsum ...
+
+      //console.log(cadena1.search(expresionRegular))//0
+
+
+      //*********************Funciones Anonimas Autoejecutables.
+      + (function (d) {
+        console.log(d);
+      })(document);
+
+
+    !(function (a, b) {
+      let resultado = a + b;
+      console.log(resultado);
+    })(2, 5);
+
+
+    //************ metodo SOME()
+    const people = [{ name: 'Edily', age: 28 }, { name: 'Jos', age: 18 }]
+
+    const adults = people.some(el => el.age >= 18);
+
+    const kids = people.some(el => el.age < 18)
+
+    const isEdilyPresente = people.some(el => el.name === 'Edily')
+
+    console.log(people)
+    console.log(adults);//true
+    console.log(kids);//false, NO HAY MENORES DE 18
+    console.log(isEdilyPresente);//true
+
+    console.log(typeof Date())
+
+
+  </script>
+</body>
+
+</html>
