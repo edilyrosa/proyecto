@@ -19,6 +19,7 @@ import {
   descuentoMonto,
   convertirBinarioDecimal,
   CuentaAnios,
+  cuentaLetras,
 } from "./ejerciciosLogica.js";
 
 console.log("😍 Archivo: modulos.js 😍");
@@ -91,3 +92,25 @@ console.log(new Date().getTime()); //1641579558595 Milisegundos desde 1/1/1970
 console.clear();
 CuentaAnios(new Date(1987, 0, 28)); //Han pasado 35 anios desde 28/1/1987
 CuentaAnios(new Date(2023, 0, 28)); //Han pasado 35 anios desde 28/1/1987
+
+console.log(typeof descuentoMonto); //function
+console.log(typeof "maria"); //string
+console.log(typeof {}); //object
+console.log(typeof []); //object
+console.log([] instanceof Array); //true
+console.log({} instanceof Array); //false
+console.log({} instanceof Object); //true
+
+let fecha22 = new Date();
+console.log(fecha22 instanceof Date); //true
+
+console.log("maria" instanceof String); //false
+const maria = new String();
+console.log(maria instanceof String); //true
+
+console.log("maria".includes("a"));
+console.clear();
+
+cuentaLetras(); //Por favor introduzca la cadena
+cuentaLetras(1); //Por favor introduzca una cadena de texto valida
+cuentaLetras("Hola Amigos Urenos"); //La cadena pasada tiene 8 vocales y 9

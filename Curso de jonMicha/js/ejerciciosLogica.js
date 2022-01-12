@@ -273,3 +273,23 @@ export const CuentaAnios = (fecha) => {
       )
     : console.info(`Estamos en el anio actual, ${fecha.toLocaleDateString()}`);
 };
+
+//**18 programa una funcion que dada una cadena de texto, cuente el numero de vocales y consonantes */
+export const cuentaLetras = (cadena) => {
+  if (cadena === undefined)
+    return console.warn("Por favor introduzca la cadena");
+  if (typeof cadena !== "string")
+    return console.warn("Por favor introduzca una cadena de texto valida");
+
+  let contadorVocales = 0;
+  let contadorConsonantes = 0;
+
+  for (const caracter of cadena) {
+    if (/[AEIOUáéíóú]/i.test(caracter)) contadorVocales++;
+
+    if (/[bcdfghijklmnpkrsxz]/i.test(caracter)) contadorConsonantes++;
+  }
+  console.log(
+    `La cadena pasada tiene ${contadorVocales} vocales y ${contadorConsonantes}`
+  );
+};
